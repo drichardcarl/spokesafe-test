@@ -1,0 +1,23 @@
+{
+  "name": "spokesafe-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "list": "tsx listAll.ts",
+    "seed": "tsx seed.ts",
+    "task1": "tsx task1.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@faker-js/faker": "^9.0.3",
+    "tsx": "^4.19.1"
+  },
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "firebase": "^10.14.1"
+  }
+}
