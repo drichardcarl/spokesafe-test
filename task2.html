@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React App</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const isObject = (value) => {
+        return (
+          typeof value === "object" &&
+          value !== null &&
+          !Array.isArray(value) &&
+          Object.prototype.toString.call(value) === "[object Object]"
+        );
+      };
+
+      const renderObject = (obj) => (
+        <ul style={{ whiteSpace: "pre" }}>
+          {Object.entries(obj).map(([k, v]) => (
+            <li>
+              {k}: {isObject(v) ? renderObject(v) : JSON.stringify(v, null, 2)}
+            </li>
+          ))}
+        </ul>
+      );
+
+      const App = () => {
+        const [count, setCount] = React.useState(0);
+        const [data, setdata] = React.useState("");
+        const [object, setObject] = React.useState(null);
+
+        return (
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+          >
+            <h1>JSON Input</h1>
+            <textarea
+              style={{ height: "50vh" }}
+              onInput={(e) => {
+                setdata(e.target.value);
+              }}
+            ></textarea>
+            <button
+              onClick={() => {
+                let parsed = null;
+                try {
+                  parsed = JSON.parse(data);
+                } catch (err) {}
+                setObject(parsed);
+              }}
+            >
+              Process
+            </button>
+            <h1>Output</h1>
+            {isObject(object) ? (
+              renderObject(object)
+            ) : (
+              <span>Input invalid</span>
+            )}
+          </div>
+        );
+      };
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+  </body>
+</html>
