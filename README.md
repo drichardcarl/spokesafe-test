@@ -63,10 +63,8 @@ If you don't have any data yet, you can use this:
     },
     {
       "orderId": "D4E5F6",
-      "amount": 75.50,
-      "products": [
-        { "id": "p125", "name": "Keyboard", "price": 75.50 }
-      ],
+      "amount": 75.5,
+      "products": [{ "id": "p125", "name": "Keyboard", "price": 75.5 }],
       "status": "delivered"
     }
   ],
@@ -75,7 +73,7 @@ If you don't have any data yet, you can use this:
     "expirationDate": "2025-12-31T23:59:59Z",
     "renewal": {
       "autoRenew": true,
-      "renewalDate": "2025-12-01T00:00:00Z
+      "renewalDate": "2025-12-01T00:00:00Z"
     }
   },
   "favoriteNumbers": [7, 13, 22, 42],
